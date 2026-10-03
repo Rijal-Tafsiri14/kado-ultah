@@ -197,7 +197,7 @@ export default function FinalePage() {
             className="mt-8 flex flex-col items-center text-coral-pink/80 font-semibold"
           >
             <Wind size={24} className="mb-2 animate-bounce" />
-            <p className="text-sm">Dekatkan wajah ke laptop, lalu tiup santai mic-nya...</p>
+            <p className="text-sm">Dekatkan mic, lalu tiup santai mic-nya...</p>
             <p className="text-xs font-normal opacity-70 mt-1">(Atau klik api lilinnya jika anginmu tak sampai)</p>
           </motion.div>
         </motion.div>
@@ -209,7 +209,7 @@ export default function FinalePage() {
         >
           <Heart size={64} className="text-coral-pink mb-4" fill="currentColor" />
           <h2 className="text-3xl md:text-4xl font-bold text-white drop-shadow-md mb-2">
-            Makasih Udah Ada.
+            Makasih Udah Selalu Ada.
           </h2>
           <p className="text-lemon-yellow font-medium text-lg">
             Sampai ketemu di cerita-cerita kita berikutnya...
