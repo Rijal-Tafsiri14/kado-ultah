@@ -24,8 +24,8 @@ export default function GamePage() {
   const [isTransitioning, setIsTransitioning] = useState<boolean>(false);
 
   // State untuk alur Pop-up awal
-  const [hasStarted, setHasStarted] = useState<boolean>(false); // True kalau udah klik tombol Play utama
-  const [showTutorial, setShowTutorial] = useState<boolean>(false); // Muncul setelah welcome modal
+  const [hasStarted, setHasStarted] = useState<boolean>(false); 
+  const [showTutorial, setShowTutorial] = useState<boolean>(false); 
 
   const currentLevel = memoryLevels[currentLevelIdx];
   
@@ -37,7 +37,7 @@ export default function GamePage() {
   // Handler klik tombol "Mulai Petualangan" di awal
   const handleStartGameAudio = () => {
     setHasStarted(true);
-    setShowTutorial(true); // Munculkan tutorial setelah klik mulai
+    setShowTutorial(true); 
 
     // Nyalakan BGM dan pancing audio effects biar aktif
     if (bgmRef.current) {
@@ -136,12 +136,12 @@ export default function GamePage() {
   return (
     <main className="min-h-screen bg-pastel-blue py-8 px-4 font-sans text-gray-800 flex flex-col items-center relative overflow-x-hidden">
       
-      {/* Audio Elements */}
-      <audio ref={bgmRef} src="/audio/joe.mpeg" loop preload="auto" />
+      {/* Audio Elements dengan joe.mpeg */}
+      <audio ref={bgmRef} src="/audio/joe.mp3" loop preload="auto" />
       <audio ref={flipAudioRef} src="/audio/flip.mp3" preload="auto" />
       <audio ref={matchAudioRef} src="/audio/finish.mp3" preload="auto" />
 
-      {/* POP-UP 1: WELCOME SCREEN (Nyalakan Musik & Masuk Game) */}
+      {/* POP-UP 1: WELCOME SCREEN */}
       <AnimatePresence>
         {!hasStarted && (
           <motion.div

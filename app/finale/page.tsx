@@ -13,9 +13,9 @@ export default function FinalePage() {
   
   const audioContextRef = useRef<AudioContext | null>(null);
   const analyserRef = useRef<AnalyserNode | null>(null);
-  const requestRef = useRef<number>();
+  const requestRef = useRef<number | undefined>(undefined);
   
-  // Tambahan Ref untuk menghitung durasi tiupan
+  // Ref untuk menghitung durasi tiupan
   const blowCountRef = useRef<number>(0); 
 
   // Setup Web Audio API untuk deteksi tiupan Mic
@@ -46,7 +46,7 @@ export default function FinalePage() {
     }
 
     return () => {
-      if (requestRef.current) cancelAnimationFrame(requestRef.current);
+      if (requestRef.current !== undefined) cancelAnimationFrame(requestRef.current);
       if (audioContextRef.current && audioContextRef.current.state !== "closed") {
         audioContextRef.current.close().catch(console.error);
       }
@@ -68,18 +68,17 @@ export default function FinalePage() {
     }
     const average = sum / bufferLength;
 
-    // LOGIKA BARU: Volume harus di atas 90 DAN konsisten selama 15 frame (tiupan panjang)
-    if (average > 60) {
+    // SENSITIVITAS DITURUNKAN: threshold 45 & durasi 6 frame biar gampang ditiup santai
+    if (average > 45) {
       blowCountRef.current += 1;
       
-      if (blowCountRef.current > 15) {
+      if (blowCountRef.current > 6) {
         handleBlowOut();
       } else {
         requestRef.current = requestAnimationFrame(detectBlow);
       }
     } else {
-      // Reset hitungan kalau suaranya turun (bukan tiupan konstan)
-      blowCountRef.current = 0;
+      if (blowCountRef.current > 0) blowCountRef.current -= 1;
       requestRef.current = requestAnimationFrame(detectBlow);
     }
   };
@@ -88,7 +87,7 @@ export default function FinalePage() {
   const handleBlowOut = () => {
     if (!candleLit) return;
     setCandleLit(false);
-    if (requestRef.current) cancelAnimationFrame(requestRef.current);
+    if (requestRef.current !== undefined) cancelAnimationFrame(requestRef.current);
     
     // Tembak Confetti dengan palet warna kita!
     confetti({
@@ -104,7 +103,7 @@ export default function FinalePage() {
       setTimeout(() => {
         localStorage.removeItem("authenticated");
         router.push("/");
-      }, 7000); // 7 detik untuk baca pesan sebelum reset
+      }, 7000); 
     }, 1500);
   };
 
@@ -132,7 +131,7 @@ export default function FinalePage() {
               Mungkin kita lebih sering bercanda dan jalanin semuanya dengan santai, tapi di momen ini lu harus tau: lu itu sosok yang luar biasa. Cara lu ngebawa diri, ketawa lu, dan energi lu selalu berhasil bikin momen biasa jadi berkesan.
             </motion.p>
             <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 3.5, duration: 1 }}>
-            Selamat bertambah umur ya. Terus jadi diri lu yang sekarang, yang selalu punya cara buat bikin senyum. Semoga semua hal baik selalu nyari jalan buat nemuin lu.
+              Selamat bertambah umur ya. Terus jadi diri lu yang sekarang, yang selalu punya cara buat bikin senyum. Semoga semua hal baik selalu nyari jalan buat nemuin lu.
             </motion.p>
           </div>
 
@@ -142,7 +141,6 @@ export default function FinalePage() {
             {/* Lilin & Api */}
             <div className="absolute -top-24 z-30 flex flex-col items-center">
               
-              {/* Ruang untuk Api (Tinggi Fix supaya lilin nggak loncat pas api mati) */}
               <div className="h-11 w-10 flex justify-center items-end">
                 <AnimatePresence>
                   {candleLit && (
@@ -166,7 +164,7 @@ export default function FinalePage() {
               />
             </div>
 
-            {/* Kue Tingkat Atas (Vanilla dengan Krim Coral Pink) */}
+            {/* Kue Tingkat Atas */}
             <div className="w-32 h-16 bg-white rounded-t-xl rounded-b-sm relative z-20 shadow-inner flex justify-center border-x-2 border-t-2 border-coral-pink/10">
               <div className="absolute top-0 w-full h-5 bg-coral-pink rounded-t-xl flex justify-around">
                  <div className="w-4 h-8 bg-coral-pink rounded-b-full"></div>
@@ -176,7 +174,7 @@ export default function FinalePage() {
               </div>
             </div>
 
-            {/* Kue Tingkat Bawah (Lemon Yellow dengan Krim Putih) */}
+            {/* Kue Tingkat Bawah */}
             <div className="w-48 h-20 bg-lemon-yellow rounded-t-sm rounded-b-2xl relative z-10 shadow-lg border-x-2 border-b-2 border-coral-pink/20 flex justify-center">
                <div className="absolute top-0 w-full h-6 bg-white flex justify-around">
                  <div className="w-6 h-10 bg-white rounded-b-full shadow-sm"></div>
@@ -199,12 +197,11 @@ export default function FinalePage() {
             className="mt-8 flex flex-col items-center text-coral-pink/80 font-semibold"
           >
             <Wind size={24} className="mb-2 animate-bounce" />
-            <p className="text-sm">Dekatkan wajah ke laptop, lalu tiup kencang mic-nya...</p>
+            <p className="text-sm">Dekatkan wajah ke laptop, lalu tiup santai mic-nya...</p>
             <p className="text-xs font-normal opacity-70 mt-1">(Atau klik api lilinnya jika anginmu tak sampai)</p>
           </motion.div>
         </motion.div>
       ) : (
-        // Layar Perpisahan (Auto Logout Phase)
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
