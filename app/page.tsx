@@ -13,7 +13,7 @@ export default function LoginPage() {
   const handleLogin = (e) => {
     e.preventDefault();
     // SESUAIKAN KATA RAHASIA KALIAN DI SINI
-    if (password.toLowerCase().trim() === "wilda") {
+    if (password.toLowerCase().trim() === "wildatun aribah") {
       localStorage.setItem("authenticated", "true");
       router.push("/game");
     } else {
@@ -43,6 +43,7 @@ export default function LoginPage() {
         </h1>
         <p className="text-sm mb-8 text-gray-700 leading-relaxed">
           Satu tempat khusus yang dibuat dengan penuh hangat. Masukkan kata rahasia kita untuk membuka kadonya ya...
+          clue "Perempuan Cantik"
         </p>
 
         <form onSubmit={handleLogin} className="flex flex-col gap-4">
@@ -63,7 +64,7 @@ export default function LoginPage() {
               animate={{ opacity: 1, y: 0 }}
               className="text-red-500 text-xs font-semibold bg-white/80 py-1.5 px-3 rounded-lg border border-red-200"
             >
-              Hayo, masa kata rahasia kita sendiri lupa? Coba ingat lagi hehe...
+              Hayo, masa gatau sih? Coba ingat lagi hehe...
             </motion.p>
           )}
 
