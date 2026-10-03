@@ -137,7 +137,7 @@ export default function GamePage() {
     <main className="min-h-screen bg-pastel-blue py-8 px-4 font-sans text-gray-800 flex flex-col items-center relative overflow-x-hidden">
       
       {/* Audio Elements dengan joe.mpeg */}
-      <audio ref={bgmRef} src="/audio/joe.mp3" loop preload="auto" />
+      <audio ref={bgmRef} src="/audio/joe.mpeg" loop preload="auto" />
       <audio ref={flipAudioRef} src="/audio/flip.mp3" preload="auto" />
       <audio ref={matchAudioRef} src="/audio/finish.mp3" preload="auto" />
 
