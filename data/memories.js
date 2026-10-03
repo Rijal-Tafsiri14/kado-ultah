@@ -13,7 +13,7 @@ export const memoryLevels = [
     level: 2,
     title: "Chapter 2: Perjalanan & Momen Seru",
     cards: [
-      { id: "l2-1", imageUrl: "/foto/pap2-1.png", caption: "Momen Jalan-jalan bareng yang ga bakal terlupakan." },
+      { id: "l2-1", imageUrl: "/foto/pap2-1.png", caption: "Another Selfie in Another Place." },
       { id: "l2-2", imageUrl: "/foto/pap2-2.png", caption: "Photobox dengan angle an angel." },
       { id: "l2-3", imageUrl: "/foto/pap2-3.png", caption: "Lucu Banget, tbtb di foto pas lagi kondangan." },
       { id: "l2-4", imageUrl: "/foto/pap2-4.png", caption: "Guru Favorit." },
