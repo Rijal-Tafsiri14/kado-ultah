@@ -125,10 +125,10 @@ export default function FinalePage() {
           
           <div className="space-y-4 text-gray-700 leading-relaxed font-medium md:text-lg italic">
             <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5, duration: 1 }}>
-              Hari ini harinya lu. Jujur, ngeliat gimana lu ngejalanin hari-hari lu dan terus jadi versi terbaik dari diri lu itu bener-bener hal yang keren.
+              Selamat bertambah umur buat orang yang belakangan ini selalu ngerubah mood gua jadi lebih baik.
             </motion.p>
             <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2, duration: 1 }}>
-              Mungkin kita lebih sering bercanda dan jalanin semuanya dengan santai, tapi di momen ini lu harus tau: lu itu sosok yang luar biasa. Cara lu ngebawa diri, ketawa lu, dan energi lu selalu berhasil bikin momen biasa jadi berkesan.
+              Jujur, gua bersyukur banget kita bisa sedeket ini sekarang. Makasih ya udah selalu ada buat dengerin cerita gua,dan bikin hari-hari gua jauh lebih seru. You mean a lot to me, beneran deh.
             </motion.p>
             <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 3.5, duration: 1 }}>
               Selamat bertambah umur ya. Terus jadi diri lu yang sekarang, yang selalu punya cara buat bikin senyum. Semoga semua hal baik selalu nyari jalan buat nemuin lu.

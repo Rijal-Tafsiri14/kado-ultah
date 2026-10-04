@@ -43,7 +43,7 @@ export default function LoginPage() {
         </h1>
         <p className="text-sm mb-8 text-gray-700 leading-relaxed">
           Satu tempat khusus yang dibuat dengan penuh hangat. Masukkan kata rahasia kita untuk membuka kadonya ya...
-          clue "Perempuan Cantik"
+          clue "2 kata, Perempuan Cantik"
         </p>
 
         <form onSubmit={handleLogin} className="flex flex-col gap-4">
@@ -74,7 +74,7 @@ export default function LoginPage() {
             type="submit"
             className="w-full py-3.5 bg-coral-pink text-white rounded-2xl font-bold tracking-wider shadow-lg hover:brightness-105 transition-all mt-2 text-base flex items-center justify-center gap-2"
           >
-            <span>Buka Kado</span> 🎁
+            <span>Masuk ke Asmaraloka</span> 🎁
           </motion.button>
         </form>
       </motion.div>
