@@ -39,10 +39,10 @@ export default function LoginPage() {
         </motion.div>
 
         <h1 className="text-3xl font-bold mb-2 text-coral-pink tracking-wide">
-          Ruang Memori Rahasia
+          Senandika
         </h1>
         <p className="text-sm mb-8 text-gray-700 leading-relaxed">
-          Satu tempat khusus yang dibuat dengan penuh hangat. Masukkan kata rahasia kita untuk membuka kadonya ya...
+          Satu tempat khusus yang dibuat dengan penuh hangat. Masukkan kata rahasia kita untuk membuka halaman nya ya...
           clue "2 kata, Perempuan Cantik"
         </p>
 
